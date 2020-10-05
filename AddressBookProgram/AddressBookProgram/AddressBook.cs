@@ -15,5 +15,9 @@ namespace AddressBookProgram
         {
             this.ContactList.Add(contact);
         }
+        public int FindByPhoneNo(long phoneNo)
+        {
+            return this.ContactList.FindIndex(contact => contact.PhoneNumber.Equals(phoneNo));
+        }
     }
 }

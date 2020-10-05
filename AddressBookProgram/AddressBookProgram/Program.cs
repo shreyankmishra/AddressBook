@@ -8,11 +8,37 @@ namespace AddressBookProgram
         {
             AddressBook addressBook = new AddressBook();
             Console.WriteLine("Welcome to Address Book Program");
-            Console.WriteLine("Add Contact");
-            Contacts contact = new Contacts();
-            setContact(contact);
-            addressBook.AddContact(contact);
-            Console.WriteLine(addressBook.ContactList.Count);
+            int option;
+            do
+            {
+                Console.WriteLine("\nMenu : \n1.Add Contact \n2.Edit Contact \n3.Exit");
+                option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        Contacts contact = new Contacts();
+                        setContact(contact);
+                        addressBook.AddContact(contact);
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter the Phone Number of Contact to Edit");
+                        long phoneNo = long.Parse(Console.ReadLine());
+                        int index = addressBook.FindByPhoneNo(phoneNo);
+                        if (index == -1)
+                        {
+                            Console.WriteLine("No Contact Exists");
+                            continue;
+                        }
+                        else
+                        {
+                            Contacts contact2 = new Contacts();
+                            setContact(contact2);
+                            addressBook.ContactList[index] = contact2;
+                            Console.WriteLine("Contact Updated Successfully");
+                        }
+                        break;
+                }
+            } while (option != 3);
         }
         public static void setContact(Contacts contact)
         {
