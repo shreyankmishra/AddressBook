@@ -11,7 +11,7 @@ namespace AddressBookProgram
             int option;
             do
             {
-                Console.WriteLine("\nMenu : \n1.Add Contact \n2.Edit Contact \n3.Exit");
+                Console.WriteLine("\nMenu : \n1.Add Contact \n2.Edit Contact \n3.Delete Contact \n4.Exit");
                 option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -37,8 +37,23 @@ namespace AddressBookProgram
                             Console.WriteLine("Contact Updated Successfully");
                         }
                         break;
+                    case 3:
+                        Console.WriteLine("Enter the First Name of Contact you wish to delete");
+                        string firstName = Console.ReadLine();
+                        int indexValue = addressBook.FindByFirstName(firstName);
+                        if (indexValue == -1)
+                        {
+                            Console.WriteLine("No Contact Exists with Following First Name");
+                            continue;
+                        }
+                        else
+                        {
+                            addressBook.DeleteContact(indexValue);
+                            Console.WriteLine("Contact Deleted Successfully");
+                        }
+                        break;
                 }
-            } while (option != 3);
+            } while (option != 4);
         }
         public static void setContact(Contacts contact)
         {

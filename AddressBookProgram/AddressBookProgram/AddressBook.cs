@@ -19,5 +19,13 @@ namespace AddressBookProgram
         {
             return this.ContactList.FindIndex(contact => contact.PhoneNumber.Equals(phoneNo));
         }
+        public int FindByFirstName(string firstName)
+        {
+            return this.ContactList.FindIndex(contact => contact.FirstName.Equals(firstName));
+        }
+        public void DeleteContact(int index)
+        {
+            this.ContactList.RemoveAt(index);
+        }
     }
 }
