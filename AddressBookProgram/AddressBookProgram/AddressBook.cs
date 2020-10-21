@@ -13,6 +13,9 @@ namespace AddressBookProgram
         }
         public void AddContact(Contacts contact)
         {
+            if (this.ContactList.Find(e => e.Equals(contact)) != null)
+                Console.WriteLine("This contact already exists.");
+            else
             this.ContactList.Add(contact);
         }
         public int FindByPhoneNo(long phoneNo)
