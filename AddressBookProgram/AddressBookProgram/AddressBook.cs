@@ -5,11 +5,11 @@ using System.Text;
 
 namespace AddressBookProgram
 {
-    class AddressBook
+    public class AddressBook
     {
         public List<Contacts> ContactList;
-        private Dictionary<string, Contacts> addressBook = new Dictionary<string, Contacts>();
-        private Dictionary<string, AddressBook> addressBookDictionary = new Dictionary<string, AddressBook>();
+        public Dictionary<string, Contacts> addressBook = new Dictionary<string, Contacts>();
+        public Dictionary<string, AddressBook> addressBookDictionary = new Dictionary<string, AddressBook>();
         private Dictionary<Contacts, string> cityDictionary = new Dictionary<Contacts, string>();
         private Dictionary<Contacts, string> stateDictionary = new Dictionary<Contacts, string>();
         public AddressBook()
