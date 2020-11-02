@@ -37,7 +37,7 @@ namespace AddressBookProgram
             int option;
             do
             {
-                Console.WriteLine("\nMenu : \n1.Add Contact \n2.Edit Contact \n3.Delete Contact \n 4.Search Contact by city/state \n 5.Count by City/State \n 6.Sort Entries By Name \n 7.Exit");
+                Console.WriteLine("\nMenu : \n1.Add Contact \n2.Edit Contact \n3.Delete Contact \n 4.Search Contact by city/state \n 5.Count by City/State \n 6.Sort Entries \n 7.Exit");
                 option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -100,7 +100,26 @@ namespace AddressBookProgram
                         addressBook.DisplayCountByCityandState();
                         break;
                     case 6:
-                        addressBook.SortByName();
+                        Console.WriteLine("\n1.Sort By Name \n2.Sort By City \n3.Sort By State \n4.Sort By Zip");
+                        int ch = Convert.ToInt32(Console.ReadLine());
+                        switch (ch)
+                        {
+                            case 1:
+                                addressBook.SortByName();
+                                break;
+                            case 2:
+                                addressBook.SortByCity();
+                                break;
+                            case 3:
+                                addressBook.SortByState();
+                                break;
+                            case 4:
+                                addressBook.SortByZip();
+                                break;
+                            default:
+                                Console.WriteLine("Invalid Choice");
+                                break;
+                        }
                         break;
                 }
             } while (option != 7);

@@ -131,5 +131,56 @@ namespace AddressBookProgram
                 }
             }
         }
+        public void SortByCity()
+        {
+            CreateCityDictionary();
+            Dictionary<string, Contacts> inverseCityDictionary = new Dictionary<string, Contacts>();
+            foreach (AddressBook obj in addressBookDictionary.Values)
+            {
+                foreach (Contacts contact in obj.cityDictionary.Keys)
+                {
+                    inverseCityDictionary.TryAdd(contact.City, contact);
+                }
+            }
+            List<string> list = inverseCityDictionary.Keys.ToList();
+            list.Sort();
+            foreach (string city in list)
+            {
+                Console.WriteLine(inverseCityDictionary[city].ToString());
+            }
+        }
+        public void SortByState()
+        {
+            CreateStateDictionary();
+            Dictionary<string, Contacts> inverseStateDictionary = new Dictionary<string, Contacts>();
+            foreach (AddressBook obj in addressBookDictionary.Values)
+            {
+                foreach (Contacts contact in obj.stateDictionary.Keys)
+                {
+                    inverseStateDictionary.TryAdd(contact.State, contact);
+                }
+            }
+            List<string> list = inverseStateDictionary.Keys.ToList();
+            list.Sort();
+            foreach (string state in list)
+            {
+                Console.WriteLine(inverseStateDictionary[state].ToString());
+            }
+        }
+        public void SortByZip()
+        {
+            SortedList<int, Contacts> sortedbyCity = new SortedList<int, Contacts>();
+            foreach (AddressBook addressBookobj in addressBookDictionary.Values)
+            {
+                foreach (Contacts contact in addressBookobj.addressBook.Values)
+                {
+                    sortedbyCity.TryAdd(contact.Zip, contact);
+                }
+            }
+            foreach (var item in sortedbyCity)
+            {
+                Console.WriteLine(item.Value.ToString());
+            }
+        }
     }
 }
