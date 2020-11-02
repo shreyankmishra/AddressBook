@@ -10,6 +10,8 @@ namespace AddressBookProgram
         public List<Contacts> ContactList;
         private Dictionary<string, Contacts> addressBook = new Dictionary<string, Contacts>();
         private Dictionary<string, AddressBook> addressBookDictionary = new Dictionary<string, AddressBook>();
+        private Dictionary<Contacts, string> cityDictionary = new Dictionary<Contacts, string>();
+        private Dictionary<Contacts, string> stateDictionary = new Dictionary<Contacts, string>();
         public AddressBook()
         {
             this.ContactList = new List<Contacts>();
@@ -61,6 +63,26 @@ namespace AddressBookProgram
                 foreach (Contacts contact in contactList.FindAll(c => c.State.Equals(state)).ToList())
                 {
                     Console.WriteLine(contact.ToString());
+                }
+            }
+        }
+        public void CreateCityDictionary()
+        {
+            foreach (AddressBook addressBookObj in addressBookDictionary.Values)
+            {
+                foreach (Contacts contact in addressBookObj.addressBook.Values)
+                {
+                    addressBookObj.cityDictionary.Add(contact, contact.City);
+                }
+            }
+        }
+        public void CreateStateDictionary()
+        {
+            foreach (AddressBook addressBookObj in addressBookDictionary.Values)
+            {
+                foreach (Contacts contact in addressBookObj.addressBook.Values)
+                {
+                    addressBookObj.stateDictionary.Add(contact, contact.State);
                 }
             }
         }
