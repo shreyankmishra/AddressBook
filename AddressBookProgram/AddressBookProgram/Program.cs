@@ -37,7 +37,7 @@ namespace AddressBookProgram
             int option;
             do
             {
-                Console.WriteLine("\nMenu : \n1.Add Contact \n2.Edit Contact \n3.Delete Contact \n 4.Search Contact by city/state \n 5.Count by City/State 6.Exit");
+                Console.WriteLine("\nMenu : \n1.Add Contact \n2.Edit Contact \n3.Delete Contact \n 4.Search Contact by city/state \n 5.Count by City/State \n 6.Sort Entries By Name \n 7.Exit");
                 option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -99,8 +99,11 @@ namespace AddressBookProgram
                     case 5:
                         addressBook.DisplayCountByCityandState();
                         break;
+                    case 6:
+                        addressBook.SortByName();
+                        break;
                 }
-            } while (option != 6);
+            } while (option != 7);
         }
         public static void SetContact(Contacts contact)
         {
