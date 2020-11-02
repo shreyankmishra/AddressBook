@@ -37,7 +37,7 @@ namespace AddressBookProgram
             int option;
             do
             {
-                Console.WriteLine("\nMenu : \n1.Add Contact \n2.Edit Contact \n3.Delete Contact \n 4.Search Contact by city/state \n 5.Count by City/State \n 6.Sort Entries \n 7.Read/Write to text file \n 8.Exit");
+                Console.WriteLine("\nMenu : \n1.Add Contact \n2.Edit Contact \n3.Delete Contact \n 4.Search Contact by city/state \n 5.Count by City/State \n 6.Sort Entries \n 7.Read/Write to text file \n 8.Read/Write to csv file \n 9.Exit");
                 option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -126,8 +126,13 @@ namespace AddressBookProgram
                         fileIO.WriteToFile(addressBook.addressBookDictionary);
                         fileIO.ReadFromFile();
                         break;
+                    case 8:
+                        CSVHandler handler = new CSVHandler();
+                        handler.WriteToFile(addressBook.addressBookDictionary);
+                        handler.ReadFromFile();
+                        break;
                 }
-            } while (option != 8);
+            } while (option != 9);
         }
         public static void SetContact(Contacts contact)
         {
